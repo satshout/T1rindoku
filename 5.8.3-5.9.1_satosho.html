@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>5.8.3-5.9.1_satosho.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<!--ここから追記 1.(数式に対応させる)-->
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      "HTML-CSS": { fonts: ["TeX"] },
+      tex2jax:{inlineMath: [['$', '$']]},
+      messageStyle: "none"
+    });
+</script>
+<!--追記 1.ここまで-->
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+  <!--ここから追記 2.(--- で改ページ)-->
+  <style>  
+    hr {  
+      opacity: 0;  
+      break-after: page;  
+    }  
+  </style>  
+  <!--追記 2.ここまで-->
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2 id="583-%E7%92%B0%E7%8A%B6%E9%9B%BB%E6%B5%81">5.8.3 環状電流</h2>
+<p>この環状電流は、低緯度の地上磁力計で検出されることがある。磁気嵐（7.4.2節で詳述）の発生時には、地表の磁場が数時間から数日にわたって低下することが古くから知られている。磁気嵐の開始時には磁場が上昇することがあり、これはChapmanとFerraro（5.3.1節）が最初に提案したように、増加した太陽風の到来による磁気圏の圧縮によって説明される。それに続く磁場の低下は、図5.51bのように、磁気圏の環状電流が地球を東から西に（北極上空から見て時計回りに）流れているためである。地表で30nTの落ち込みがあり、これは中程度の磁気嵐であるが、(<code>この地表磁場の低下は</code>) 地球の中心からの距離 $4.5 R_E$ (<code>の上空</code>) に $10^6 \text{A}$ (<code>の環状電流が流れていると置くこと</code>) で説明することができる。電流と磁場の間の単純な関係は</p>
+<p>$$\Delta B \text{ [nT]} = 2 \pi I \text{ [A]} / 10 r \text{ [km]}$$</p>
+<p>であり、これは円電流の中心に作られる磁束密度の標準的な公式 ($B = \mu_0 I/2r$) に基づいている。</p>
+<hr>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<blockquote>
+<p>Fig 5.53<br>
+磁気嵐時の $L = 4$ の環状電流におけるプロトンのエネルギースペクトルと数密度スペクトル。</p>
+</blockquote>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p>地中に誘導される電流は、地中の導電率に依存する量だけ効果を増大させ、通常、約3/2のファクターに相当する。したがって、近似的な関係は次のように</p>
+<p>$$\Delta B \approx 3 \pi I / 10 r \approx I / r \tag{5.46}$$</p>
+<p>距離rは、もちろん地上からの観測だけでは決定できないが、衛星による測定では可能である。例えば、衛星搭載の磁力計が環状電流の内側にあれば、地上で見たのと同じ意味の効果が観測され、衛星が環流の外側にあれば、逆の意味の効果が観測される。<br>
+陽子は西に、電子は東に流れるため、捕捉された粒子の漂流によって (<code>北極から見おろして</code>) 時計回りのリング電流が発生する（5.7.2項）。1958年にヴァン・アレン粒子が発見された後、これが環状電流の原因ではないかと考えられたが、よくよく考えてみると、当時観測されたヴァン・アレン帯には十分な量の粒子が含まれていないことがわかった。この粒子はエネルギーが低く、主に10～100keVの陽子である（図5.53）。一般に、電流はプラズマシートの内縁と捕獲帯の外縁に近い、$4～6R_E$に位置する。その領域に粒子が集中するのは、磁気圏対流の結果である（5.5節）。リコネクション地点の地球側のテール場(<code>tail field</code>)の内向きの対流によって粒子は内側に加速されるが、最終的には地球に近い強い場でミラーリングされ、ここでプラズマシートの内縁が形成される。<br>
+式5.40によれば、捕捉された粒子の縦方向のドリフト率は、そのエネルギーに比例する。</p>
+<hr>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<blockquote>
+<p>Fig 5.54<br>
+1984年9月5日、AMPTEを通過する際の様々な重イオンの放射状プロファイル。(a) 数密度、 (b) 単位電荷あたりのエネルギーが 5 〜 315 keV の粒子のエネルギー密度。</p>
+</blockquote>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p>各陽子は同じ電荷（＋e）を持っているので、総電流は、すべてのエネルギーで積分した粒子密度と粒子エネルギーの積に比例する。したがって、総電流は環状電流を構成する粒子の総エネルギー　─ 実質的に陽子の総エネルギー(E)に比例する。したがって、式5.46を用いると</p>
+<p>$$\Delta B \approx 2.6 \times 10 ^ {14} E \text{ (J)} \tag{5.47}$$</p>
+<p>すなわち、環状電流によって磁場が減少することが理解される。<br>
+環状電流の主要なイオンは $\text{H}^+$ であるが、$\text{O}^+$、$\text{He}^+$、$\text{He}^{++}$、$\text{O}^{++}$といったより重いイオンも存在する（図5.54）。<br>
+環状電流のエネルギー密度は、地磁気のエネルギー密度（$5R_E$の地点で$2×10^{-8} \text{ J/m}^3$）を超えることがあり、その後、地磁気が歪むようになる。これは地磁気のインフレーションと呼ばれ、β ＞ 1（5.6.1節）の条件の一例である。安定した環状電流が存在するには、粒子にかかる遠心力、歪んだ磁力線に沿った磁気張力、粒子圧の勾配がバランスしている必要がある。</p>
+<hr>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<blockquote>
+<p>Fig 5.55<br>
+一対の Birkeland 電流の磁気シグネチャー</p>
+</blockquote>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p>中緯度安定赤色（SAR）アーク（6.4節で説明）の形成は、環状電流が地球に接近してプラズマポーズに遭遇すると、環状電流の中で不安定性が生じることに起因するとされている。この不安定性は電離層にエネルギーを送り込み、そこでガスが数千度加熱され、630nmの大気光放射が発生する。</p>
+<h3 id="584-birkeland-%E9%9B%BB%E6%B5%81-%E6%B2%BF%E7%A3%81%E5%8A%9B%E7%B7%9A%E9%9B%BB%E6%B5%81">5.8.4 Birkeland 電流 <code>(沿磁力線電流)</code></h3>
+<p>電離層電流は水平方向にしか流れないと長年考えられており、垂直方向の電流の可能性が排除されていたため、地上のマグノグラムから得られる電流系は、実際には同等の電流系 (<code>? the equivalent current system</code>) でしかなかった。実際、福島の定理（8.4.2節）では、地上から垂直方向の電流は検出できないことになっている。しかし、6.5.5節で述べるように、地磁気に沿った導電率は磁場を横切る導電率をはるかに上回っており、磁場に沿って何らかの電流が流れるという考えを軽々に否定することはできない。磁場に沿って電流が流れるという考えは、1908年にK.Birkelandによって初めて提唱されたが、証拠がないため、この考えは何年も休眠状態にあった。1960年代に理論的な根拠から再び注目されるようになったが、確かな根拠が見つかるまでにはさらに数年の歳月が必要であった。<br>
+1970年代前半の人工衛星（ISIS-2 と TRIAD）による磁気観測は、説得力のあるものだった。衛星がオーロラ帯を通過したとき、図5.55のような西向きの磁場が緯度2〜3度（200〜300km）にわたって広がっていることを示す磁気信号を記録した。これは、高緯度側では下向きに、低緯度側では上向きに流れる $5×10^{-7} \text{ A/m} ^2$ 程度の電流の二重板を衛星が通過したと考える必要がある。その後、他の衛星観測によって、電流の統計的な分布がプロットされ、多くの詳細が明らかにされた。<br>
+この電流は図5.56のような典型的な分布で、ほぼ常に存在し、擾乱レベルの上昇とともに強まり赤道方向 (<code>equatoward</code>) に移動し、明らかにオーロラオーバル（8.3.2項）と関係している。電離層に流入・流出する成分は、夕方から朝にかけて（ほぼ）入れ替わる。</p>
+<hr>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<blockquote>
+<p>Fig 5.56<br>
+Birkeland流の分布 (a) 弱い擾乱時、 (b) 活発な擾乱時</p>
+</blockquote>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<blockquote>
+<p>Fig 5.57<br>
+Region 1 と Region 2 における活動期（上段）と弱乱期（下段）のBirkeland 電流の大きさ。</p>
+</blockquote>
+<hr>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<blockquote>
+<p>Fig 5.58<br>
+Kp指数で測定される磁気活動に伴うBirkeland電流の変化</p>
+</blockquote>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p>慣習的に、電流の流れの方向に関係なく、極側にある領域を「領域1 (<code>Region 1</code>)」、赤道側にある領域を「領域2 (<code>Region 2</code>)」と呼んでいる。各領域の電流密度は時間帯によって異なり（図5.57）、地球の昼側では領域1が支配的で、深夜には両領域がほぼ同じ強さになる。真夜中には、下向きの2つの領域の間に上向きの1つの領域という3つの領域で流れが発生する遷移があり、これは<em>ハラン不連続面</em> として知られるエレクトロジェット (<code>電離層の高層電流</code>) の反転に関係している（8.4.1節）。電流密度は磁気活動指数 $K_p$ に対してほぼ直線的に変化する（図5.58）。Birkeland 電流システムの総電流は $10^6～10^7 \text{A}$ で、様々な領域やセクターの電流を収支すると、測定精度の範囲内で、電離層に流入する総電流と流出する電流が等しくなることがわかる。</p>
+<h1 id="59-%E7%A3%81%E6%B0%97%E5%9C%8F%E3%81%AE%E3%82%B5%E3%83%96%E3%82%B9%E3%83%88%E3%83%BC%E3%83%A0-%E7%A3%81%E6%B0%97%E5%B5%90">5.9 磁気圏のサブストーム (<code>磁気嵐</code>)</h1>
+<h2 id="591-%E6%96%AD%E7%B6%9A%E7%9A%84%E3%81%AA%E5%90%88%E6%B5%81%E3%81%8C%E3%82%82%E3%81%9F%E3%82%89%E3%81%99%E3%82%82%E3%81%AE">5.9.1 断続的な合流がもたらすもの</h2>
+<p>磁気圏の循環は(主に)磁気圏界面の太陽側での磁気合流によって駆動されるが、その連続性はテール側のプラズマシートでのリコネクションに依存する。図5.59はある選択された磁力線の略歴である。IMF (<code>Interplanetary Magnetic Field, 惑星間空間磁場、ここでは太陽風中の磁場</code>) と接続し, 開放線として極域を対流したのち、尾部で再接続して、地球方向への回帰流でほぼ双極子の形に戻る。$R_M$ と $R_T$ がそれぞれ磁気圏界面と尾部での接続速度であり、$T$ が尾部への開磁力線の輸送速度であり、$r$ が尾部から閉磁圏へ閉磁力線が戻される速度である場合、</p>
+<p>$$<br>
+\mathrm{R}<em>{\mathrm{M}}=\mathrm{T}=\mathrm{R}</em>{\mathrm{T}}=\mathrm{r}<br>
+$$</p>
+<p>この式は定常循環状態を意味する。</p>
+<hr>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<blockquote>
+<p>Fig. 5.59<br>
+ある選択された磁力線の略歴</p>
+</blockquote>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<blockquote>
+<p>Fig. 5.60<br>
+サブストームの成長期における磁気圏の変化<br>
+<code>EROSION: 浸食, EQUATORWARD MOTION: 赤道方向の変動, INWARD MOTION: 内側方向の変動, REDUCTION: 縮小, ENLARGEMENT: 拡大, THINNING: 薄化</code></p>
+</blockquote>
+<hr>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+> Fig. 5.61
+> サブストーム中での第二の中性線の形成
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p>十分に長い時間にわたって、次の式が成り立たなければならない。</p>
+<p>$$<br>
+\overline{\mathrm{R}}<em>{\mathrm{M}}=\overline{\mathrm{T}}=\overline{\mathrm{R}}</em>{\mathrm{T}}=\overline{\mathrm{r}} .<br>
+$$</p>
+<p>一方、断続的な合流は不均衡を引き起こす。(<code>昼側のリコネクション領域では北向きの地磁気に対して南向きの太陽風磁場がぶつかることでリコネクションが起こっているので</code>) IMFが南を向くと、接続率が上昇し、しばらくの間、$R_M &gt; R_T$となる。このとき、除去される開磁力線の数よりも生成される開磁力線の数の方が多く、(<code>極域で磁力線密度が大きくなるので</code>) これがオーロラオーバルが赤道方向に移動する理由である（セクション5.5.1）。$R_T &gt; R_M$ の場合、尾部のリコネクション率が磁気圏界面でのリコネクション率を上回るため、開磁場の正味の損失が生じ、オーロラオーバルは再び縮小する。<br>
+磁気圏界面の接続は、離散的で限定的だが頻繁な「磁束移動現象」の連続として進行することを見てきた。尾部の接続は、頻度は低いが、より激変的な事象で進行し、これがサブストームの基礎となる。サブストームはもともとオーロラの地上研究（8.4.4節）から同定されたもので、3つのフェーズが同定されている：</p>
+<ul>
+<li>成長期</li>
+<li>拡大期、そして</li>
+<li>回復期</li>
+</ul>
+<hr>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+> Fig. 5.62
+> サブストーム発生中における磁気テールでの現象の時系列。白い矢印はプラズマの流れを示す。プラズマシートは磁力線という境界に囲まれている。N'はサブストームで形成される第二の中性線であり、図⑧はテールによって追い出されたプラズモイドを表す。
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p>磁気圏では、成長期は磁気圏前面からの侵食の増大に対応し、図5.60に示すように、この時期にプラズマシートは薄くなる。拡大期は、静穏期よりも地球に近い中性線の形成から始まる（図5.61）。地球同期距離の衛星は高エネルギー電子のフラックスの増加を観測し、地磁気はより双極的になる。図5.62はこのような一連の流れを示している。2本の中性線の間にある尾部の領域は、回復期が始まると磁気圏尾部に沿って放出されることを付言しておく。これは<em>プラズモイド</em>として知られている。膨張相でプラズマシートが薄くなることは、中性シート近傍の衛星による粒子束の損失として検出することができる。プラズモイドの放出は、地球から遠ざかる高エネルギー粒子のバーストとして、尾の20〜100RE下の衛星によって検出されるかもしれない。<br>
+サブストーム発生時の磁気圏尾部の正確な構成はまだ完全には確立されておらず、いくつかのモデル（観測ではまだ区別できない）が提唱されている。尾磁場の局所的な反転を伴うモデルもあれば、オーロラで見られる複数のアークに対応する複数の中性線を含むモデルもある。</p>
+
+</body>
+</html>
