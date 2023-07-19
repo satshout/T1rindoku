@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>6.5.3-6.5.5_satosho.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<!--ここから追記 1.(数式に対応させる)-->
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      "HTML-CSS": { fonts: ["TeX"] },
+      tex2jax:{inlineMath: [['$', '$']]},
+      messageStyle: "none"
+    });
+</script>
+<!--追記 1.ここまで-->
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+  <!--ここから追記 2.(--- で改ページ)-->
+  <style>  
+    hr {  
+      opacity: 0;  
+      break-after: page;  
+    }  
+  </style>  
+  <!--追記 2.ここまで-->
+<center>
+<img src=./Fig_6_19.png width=500>
+<br>
+<br>
+<img src=./eq_6_61.png width=500>
+</center>
+<br>
+<br>
+<br>
+<br>
+<h2 id="653-%E4%B8%AD%E6%80%A7%E5%A4%A7%E6%B0%97%E3%81%AE%E9%A2%A8%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E5%BF%9C%E7%AD%94">6.5.3 中性大気の風に対する応答</h2>
+<h3 id="%E7%A3%81%E5%A0%B4%E3%82%92%E6%A8%AA%E5%88%87%E3%82%8B%E9%81%8B%E5%8B%95"><em>磁場を横切る運動</em></h3>
+<p>中性空気中の風Uによる力は $F = m \nu U$ であり、$\nu$ は関連する衝突周波数である。まず、風が地磁気に対して垂直に吹くと考える。この値を式6.61の $F_x$ に代入すると、x 方向と y 方向の速度成分が得られる（図6.19）。<br>
+二つの限定的なケースが興味深い。十分に低い高さ $\nu \gg \omega$ では、$f_0$ は小さく、$\nu _y \ll \nu _x$であり、$\nu _x = (m \nu U / eB)f _0 = U$ で、プラズマは予想通り風と共に運ばれる。$\nu \ll \omega$ が成り立つ十分高い高さでは、$f_0$ は大きく、$\nu _x \ll \nu _y$ である。</p>
+<p>$$<br>
+\mathrm{v} _{\mathrm{y}} = \mathrm{m} _{\mathrm{e}} \nu _{\mathrm{e}} \mathrm{U} / \mathrm{eB} = \mathrm{U} / \mathrm{f} _0 (\mathrm{e})<br>
+$$</p>
+<p>が電子の式であり、そして</p>
+<p>$$<br>
+\mathrm{v} _{\mathrm{y}} = -\mathrm{U} / \mathrm{f} _0 (\mathrm{i})<br>
+$$</p>
+<p>がイオンの式である。イオンと電子は反対方向に動き、風向きと直角の電流を構成するが、$f_0$ が大きいため、その値は比較的小さい。</p>
+<hr>
+<br>
+<blockquote>
+<p>Fig 6.21<br>
+電子（θe）と陽イオン（θi）の力と速度の間の角度。θ = 0の場合、粒子は中性の空気とともに移動し、0 = 90°の場合、粒子は磁場（E x B）とともに移動する。</p>
+</blockquote>
+<br>
+<blockquote>
+<p>参考: Magnetic Dip (伏角) $I$ の画像 (国土地理院)<br>
+<img src=https://www.gsi.go.jp/common/000147340.jpg width=500></p>
+</blockquote>
+<br>
+<br>
+<p>ν＝ω の場合、運動は風に対して 45° である。これは電子で約 75 km、イオンで約 120 kmの地点で起こる。これらのレベルの間では、イオンは多かれ少なかれ風と一緒に動くのに対し、電子はほぼ風を横切るように動く。風が最も効果的に電流を発生させるこの領域がダイナモ領域である。このような領域が存在する主な理由は、イオンと電子の質量比にある：</p>
+<p>$$<br>
+\omega _{\mathrm{e}} / \omega _{\mathrm{i}}=\mathrm{m} _{\mathrm{i}} / \mathrm{m} _{\mathrm{e}}=1836 \mathrm{M} _{\mathrm{i}}<br>
+$$</p>
+<p>ここで $M_i$ はイオンの原子量である。</p>
+<h3 id="%E7%A3%81%E5%8A%9B%E7%B7%9A%E3%81%AB%E6%B2%BF%E3%81%A3%E3%81%9F%E9%81%8B%E5%8B%95"><em>磁力線に沿った運動</em></h3>
+<p>ここで、地磁気に沿った風の成分があるとする。中性大気の風は水平面に吹くが、地磁気は磁極以外の場所では垂直でないので、一般にそうなる。簡単のため、風 U が磁気子午線上 (<code>方位磁石が指す方向</code>) にあると仮定する。伏角を$I$ とする (<code>参考画像参照</code>) と、磁場に沿った中性空気成分は $U_{||} = U \cos I$ となり (図6.22 参照)、プラズマは同じように動く。電離層は、その垂直構造と比較して、水平面内では比較的均一である。したがって、電界に沿ったドリフト $U_{||}$ の主な影響は電離層の上昇または降下であり、どちらになるかは鉛直成分 W に依存する。</p>
+<p>$$<br>
+\mathrm{W}=\mathrm{U} _{|} \sin \mathrm{I}=\frac{1}{2} \cdot \mathrm{U} \sin 2 \mathrm{I}<br>
+$$</p>
+<p>この効果は伏角が 45° であるような地点で最大となる。</p>
+<hr>
+<br>
+<br>
+<blockquote>
+<p>Fig. 6.22<br>
+傾斜磁場の存在下での中性風のリフティング効果 (R. E. DuBroff et al, Report AFGL-TR-1'6-0143, University of Illinois, 1976)</p>
+</blockquote>
+<br>
+<br>
+<br>
+<p>式6.29 は、平衡状態における拡散による下方ドリフト $\approx D / H$ を示し、ここで D は拡散係数、H は スケールハイトである。これに風による垂直ドリフトWを加えると、$(D/H) + W$ となる。イオンが最大生産率をとる高度を決定する拡散と再結合(<code>recombination</code>)のバランスは、風がない場合には $\beta \approx D/H^2$ で表される。<br>
+風がある場合、これは次のようになる。</p>
+<p>$$<br>
+\beta \sim\left(\frac{\mathrm{D}}{\mathrm{H}^2}+\frac{\mathrm{W}}{\mathrm{H}}\right)<br>
+$$</p>
+<p>ここで $\beta$ は生産率最大となる高度での再結合係数である。$\beta$ は高さによって $\exp \left(-\mathrm{h} _{\mathrm{m}} / \mathrm{H}\right)$ で変化するので、以下のようにかける</p>
+<p>$$<br>
+\frac{(\mathrm{D} / \mathrm{H}+\mathrm{W})}{\mathrm{D} / \mathrm{H}}=1+\frac{\mathrm{WH}}{\mathrm{D}} \sim \exp \left(\frac{\Delta \mathrm{h} _{\mathrm{m}}}{\mathrm{H}}\right) \sim 1+\frac{\Delta \mathrm{h} _{\mathrm{m}}}{\mathrm{H}}<br>
+$$</p>
+<p>これは生産率最大となる高度の小さな増分 $\Delta \mathrm{h}  _{\mathrm{m}}$ に対して成り立つ。したがって、中性風の効果は層の中での最大生産率をとる高さを以下のように変化させる。</p>
+<p>$$<br>
+\Delta \mathrm{h} _{\mathrm{m}} \sim \frac{\mathrm{WH}^2}{\mathrm{D}} \sim \frac{\mathrm{W}}{\beta} .<br>
+$$</p>
+<br>
+<h2 id="654-%E9%9B%BB%E5%A0%B4%E3%81%AB%E5%AF%BE%E3%81%99%E3%82%8B%E5%BF%9C%E7%AD%94">6.5.4 電場に対する応答</h2>
+<p>電界 $E_x$ は陽イオンに力 $E_x e$ を、電子に $-E_x e$ を及ぼす。式6.61の $F_x$ をそれぞれ $E_x e$ と $-E_x e$ に置き換えると、陽イオンの場合は次のようになる、</p>
+<p>$$<br>
+v_x=\frac{E_x}{B} f_1(i) ; \quad v_y=-\frac{E_x}{B} f_2(i)<br>
+$$</p>
+<p>そして電子については</p>
+<p>$$<br>
+v_x=-\frac{E_x}{B} f_1(e) ; \quad v_y=-\frac{E_x}{B} f_2(e)<br>
+$$</p>
+<p>である。</p>
+<hr>
+<br>
+<br>
+<br>
+<blockquote>
+<p>Table 6.3<br>
+<em>風と電場の影響</em></p>
+</blockquote>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p>それぞれの場合において、$\nu \ll \omega$ ならば、$v_x &lt;&lt; v_y$であり、$v_y = - E_x/B$ である。したがって、高高度ではプラズマは全体として $-y$ 方向に速度 $E_x/B$ でドリフトする。これは、セクション2.3.7で E x B ドリフトについて導かれた結果と同じであり、式2.40によってベクトル形式で与えられる。<br>
+低高度では $\nu \gg w, \ v_y \ll v_x$ である。陽イオンの場合</p>
+<p>$$<br>
+v_x=\frac{E_x}{B} \cdot f_0(i)<br>
+$$</p>
+<p>電子の場合、</p>
+<p>$$<br>
+v_x=-\frac{E_x}{B} \cdot f_0(e) .<br>
+$$</p>
+<p>電子とイオンは反対方向に移動し、同じ方向で印加電界に平行な電流を表す。しかし、低高度では $f_0$ が小さいため、電流は比較的小さい。<br>
+先ほどと同様に、$\nu = \omega$ (すなわち $f_0 = 1$)のとき、ドリフトは電場に対して 45° になり、電子は電場に反応する傾向があるが、イオンは中性空気の制御下にある高さの範囲が再び存在する。<br>
+表6.3は、3つの高さ領域における風と電場に対する応答をまとめたものである。</p>
+<br>
+<h2 id="655-%E4%BC%9D%E5%B0%8E%E7%8E%87">6.5.5 伝導率</h2>
+<p>電気伝導率は、電流密度（$i$（A/m））と電界（$E$（V/m））の比であり、 $\sigma = i/E = Nev/E$ で表される。ここで $v$ は関連粒子の速度、$N$ はその濃度、$e$ はそれぞれの電荷である。<br>
+磁場がない場合、または電場が磁場に沿っている場合、式6.59から、$v = F/mv = Ee/mv$ となる。したがって</p>
+<p>$$<br>
+\sigma=\frac{\mathrm{Ne}^2}{\mathrm{~m} v} .<br>
+$$</p>
+<p>イオン電流と電子電流は単純に加算されるので、両者による導電率は次のようになる。</p>
+<p>$$<br>
+\sigma_0=\left(\frac{\mathrm{N} _{\mathrm{e}}}{\mathrm{m} _{\mathrm{e}} v _{\mathrm{e}}}+\frac{\mathrm{N} _{\mathrm{i}}}{\mathrm{m} _{\mathrm{i}} v _{\mathrm{i}}}\right) \mathrm{e}^2<br>
+$$</p>
+<p>これは <em>直接</em> または <em>縦断</em> 伝導率 という。</p>
+<hr>
+<br>
+<br>
+<br>
+<blockquote>
+<p>Fig. 6.23<br>
+正午の中緯度の導電率プロファイル。(S.-I. Akasofu and S. Chapman (after K. Maeda and H. Matsumoto), Solar-Terrestrial Physics. Oxford University Press, 1972. オックスフォード大学出版局の許可による)</p>
+</blockquote>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p>磁場に垂直な電場（または電場成分）については、電場に平行および垂直に流れる電流を扱うために2つの導電率を定義する。これらは $\sigma_1$ と $\sigma_2$ という記号で表され、それぞれ <em>Pedersen導電率</em> と <em>Hall導電率</em> と呼ばれる。</p>
+<p>$$<br>
+\begin{aligned}<br>
+&amp; \sigma_1=\left(\mathrm{N} _{\mathrm{e}} \mathrm{f}_1(\mathrm{e})+\mathrm{N} _{\mathrm{i}} \mathrm{f}_1(\mathrm{i})\right) \frac{\mathrm{e}}{\mathrm{B}}=\left[\frac{\mathrm{N} _{\mathrm{e}}}{\mathrm{m} _{\mathrm{e}} v _{\mathrm{e}}} \cdot \frac{v _{\mathrm{e}}^2}{\left(v _{\mathrm{e}}^2+\omega _{\mathrm{e}}^2\right)}+\frac{\mathrm{N} _{\mathrm{i}}}{\mathrm{m} _{\mathrm{i}} v _{\mathrm{i}}} \cdot \frac{v _{\mathrm{i}}^2}{\left(v _{\mathrm{i}}^2+\omega _{\mathrm{i}}^2\right)}\right] \mathrm{e}^2 ; \cr<br>
+\cr<br>
+&amp; \sigma_2=\left(\mathrm{N} _{\mathrm{e}} \mathrm{f}_2(\mathrm{e})-\mathrm{N} _{\mathrm{i}} \mathrm{f}_2(\mathrm{i})\right) \frac{\mathrm{e}}{\mathrm{B}}=\left[\frac{\mathrm{N} _{\mathrm{e}}}{\mathrm{m} _{\mathrm{e}} v _{\mathrm{e}}} \cdot \frac{\omega _{\mathrm{e}} v _{\mathrm{e}}}{\left(v _{\mathrm{e}}^2+\omega _{\mathrm{e}}^2\right)}-\frac{\mathrm{N} _{\mathrm{i}}}{\mathrm{m} _{\mathrm{i}} v _{\mathrm{i}}} \cdot \frac{\omega _{\mathrm{i}} v _{\mathrm{i}}}{\left(v _{\mathrm{i}}^2+\omega _{\mathrm{i}}^2\right)}\right] \mathrm{e}^2 .<br>
+\end{aligned}<br>
+$$</p>
+<p>これらの式を導き出し、操作する際には、$\omega_B = eB/m$ であることを念頭に置くべきである。</p>
+<br>
+<p><code>-----</code></p>
+<p>電場が以下のベクトルで表されるとする。</p>
+<p>$$<br>
+E= \mathbf{i} E_x+ \mathbf{j} E_y+ \mathbf{k} E_z,<br>
+$$</p>
+<p>ここで $E_x, E_y, E_z$ は各成分であり、$\mathbf{i}, \mathbf{j}$, $\mathbf{k}$は単位ベクトルである。z軸が磁場に平衡であるとする (図 6.19 と同様)。すると、電流ベクトルは以下で与えられる。</p>
+<p>$$<br>
+\mathbf{J}=\mathbf{i} \mathbf{J} _{\mathrm{x}}+\mathbf{j} \mathbf{J} _{\mathrm{y}}+\mathbf{k} \mathbf{J} _{\mathrm{z}}=\left(\begin{array}{ccc}<br>
+\sigma_1 &amp; \sigma_2 &amp; 0 \cr<br>
+-\sigma_2 &amp; \sigma_1 &amp; 0 \cr<br>
+0 &amp; 0 &amp; \sigma_0<br>
+\end{array}\right)\left(\begin{array}{l}<br>
+\mathrm{E} _{\mathrm{x}} \cr<br>
+\mathrm{E} _{\mathrm{y}} \cr<br>
+\mathrm{E} _{\mathrm{z}}<br>
+\end{array}\right)<br>
+$$</p>
+<p>ここでテンソルの要素は上で導出した導電率である。この形式により、3つの導電率とベクトル電場が既知であれば、任意の電流成分を導出することができる。</p>
+<p><code>-----</code></p>
+<br>
+<p>図6.23に、正午の中緯度電離層における導電率の高度分布の計算結果を示す。Pedersen導電率とHall導電率はE領域でピークを示すのに対し、直接導電率は高度が上がるにつれて増加し続け、その大きさははるかに大きいことに注意すべきである。</p>
+<hr>
+<br>
+<br>
+<br>
+<blockquote>
+<p>Fig. 6.24<br>
+(a) 正電荷粒子および  (b) 負電荷粒子 による導電率、5～70km。電子($\sigma _e$)、陰イオン($\sigma ^-$)、陽イオン($\sigma ^+$)による、<br>
+実測値( ── ) と 理論値( ---- ) 。陰イオン伝導率は35km以下では陽イオン伝導率と等しい。<br>
+(After W. Swider, Radio Science 23, 389, 1988, copyright by the American Geophysical Union)</p>
+</blockquote>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p>図6.24は、5kmから70kmの間の正と負の粒子による導電率分布の推定値を示している。<br>
+実際の電離層の複雑な点は、空間的に一様でないことである。これは連続性の要件を通して電流に影響を与える。緯度や時間帯の変化も多少は影響するが、電離層の水平方向の層が垂直方向の流れに最も影響する。</p>
+<hr>
+<br>
+<br>
+<blockquote>
+<p>Fig. 6.25<br>
+赤道上の水平電離スラブ (薄い層) における電流と磁場</p>
+</blockquote>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p>磁気赤道では磁場は水平であり、このことは、我々の慣例から言えば、媒質がy方向に境界を持つことを意味する(図6.25参照)。(図6.25参照) そして、$\sigma_1$ と $\sigma_2$ の定義から(そして式6.70からも)</p>
+<p>$$<br>
+\left.\begin{aligned}<br>
+&amp;\mathbf{J} _{\mathrm{x}}=\sigma_1 \mathrm{E} _{\mathrm{x}}+\sigma_2 \mathrm{E} _{\mathrm{y}} \cr<br>
+\cr<br>
+&amp;\mathrm{J} _{\mathrm{y}}=-\sigma_2 \mathrm{E} _{\mathrm{x}}+\sigma_1 \mathrm{E} _{\mathrm{y}} .<br>
+\end{aligned}\right\rbrace<br>
+$$</p>
+<p>y方向とは鉛直方向であるから、$J_y$ はゼロでなければならない。したがって、$E_y = E_x \sigma_2 / \sigma_1$、そして代入によって</p>
+<p>$$<br>
+\mathrm{J} _{\mathrm{x}}=\left(\sigma_1+\frac{\sigma_2^2}{\sigma_1}\right) \mathrm{E} _{\mathrm{x}}=\sigma_3 \mathrm{E} _{\mathrm{x}},<br>
+$$</p>
+<p>ここで $\sigma_3$ は <em>Cowling導電率</em> である。もし導電率が電子のような1種の粒子によるものであれば、$\sigma_3 = \sigma_0$（磁場が存在しないかのように）であることは簡単に証明できる。これは実験室における金属導体と似ている。導電率は横磁場の影響を受けないが、電位差（ホール効果）が他の面に現れる。</p>
+<br>
+<p><code>-----</code></p>
+<p>任意の緯度に一般化するために、導電率 $\sigma _{\mathrm{xx}}, \sigma _{\mathrm{xy}}, \sigma _{\mathrm{yy}}$ を定義し、x、y、zをそれぞれ磁南方向、磁東方向、鉛直方向とし、添え字は電場と電流の成分を示す。したがって</p>
+<p>$$<br>
+\left.<br>
+\begin{align}<br>
+&amp;\mathrm{J} _{\mathrm{x}}=\sigma _{\mathrm{xx}} \mathrm{E} _{\mathrm{x}}-\sigma _{\mathrm{xy}} \mathrm{E} _{\mathrm{y}} \cr \cr<br>
+&amp;\mathrm{J} _{\mathrm{y}} = -\sigma _{\mathrm{xy}} \mathrm{E} _{\mathrm{x}} + \sigma _{\mathrm{yy}} \mathrm{E} _{\mathrm{y}} .<br>
+\end{align}<br>
+\right\rbrace<br>
+$$</p>
+<p>$\sigma _{\mathrm{xx}}, \sigma _{\mathrm{xy}}, \sigma _{\mathrm{yy}}$ の式は、地磁気の傾斜角 $(I)$ を含んでいる。赤道にあまり近くない緯度では</p>
+<p>$$<br>
+\left.\begin{align}<br>
+&amp;\sigma _{\mathrm{xx}} \sim \sigma _1 / \sin ^2 \mathrm{I} \cr<br>
+&amp;\sigma _{\mathrm{xy}} \sim \sigma _2 / \sin \mathrm{I} \cr<br>
+&amp;\sigma _{\mathrm{yy}} \sim \sigma _1<br>
+\end{align}\right\rbrace<br>
+$$</p>
+<p>電離層を水平電流のみを運ぶ層と見なした場合、高さに関して導電率を積分することが有用である：</p>
+<p>$$<br>
+\left.\begin{align}<br>
+&amp;\Sigma _{\mathrm{xx}} = \int \sigma _{\mathrm{xx}} \mathrm{dh} \cr<br>
+&amp;\Sigma _{\mathrm{xy}} = \int \sigma _{\mathrm{xy}} \mathrm{dh} \cr<br>
+&amp;\Sigma _{\mathrm{yy}} = \int \sigma _{\mathrm{yy}} \mathrm{dh} .<br>
+\end{align}\right\rbrace<br>
+$$</p>
+<hr>
+<br>
+<br>
+<blockquote>
+<p>Fig. 6.26<br>
+局所的な正午の層導電率。(S.-I. Akasofu and S. Chapman (after K. Maeda and H. Matsumoto, Solar-Terrestrial Physics. Oxford University Press, 1972. オックスフォード大学出版局の許可を得て掲載)</p>
+</blockquote>
+<br>
+<br>
+<blockquote>
+<p>参考画像</p>
+<table>
+<thead>
+<tr>
+<th>伏角緯度 (dip latitude)</th>
+<th>伏角と緯度の関係</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a title="http://www.ngdc.noaa.gov/ngdc.html, Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:World_Magnetic_Inclination_2015.pdf"><img width="1024" alt="World Magnetic Inclination 2015" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/World_Magnetic_Inclination_2015.pdf/page1-800px-World_Magnetic_Inclination_2015.pdf.jpg"></a> By NOAA, <a href="https://commons.wikimedia.org/wiki/File:World_Magnetic_Inclination_2015.pdf">Link</a></td>
+<td><p><a href="https://commons.wikimedia.org/wiki/File:Magnetic_Dip.svg#/media/File:Magnetic_Dip.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/0/02/Magnetic_Dip.svg" alt="Magnetic Dip.svg" width="720"></a><br>By <a href="//commons.wikimedia.org/wiki/User:%E7%97%9B" title="User:痛">Designism</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en" title="Creative Commons Zero, Public Domain Dedication">CC0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=133322877">Link</a></p></td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<br>
+<br>
+<br>
+<br>
+<p>図6.26に、伏角緯度に対するこれらの層の導電率の変化を示す。これらの値は、6.70 のような式を用いて、印加電場による電流を予測することができる。</p>
+<br>
+<h2 id="%E3%81%95%E3%82%89%E3%81%AA%E3%82%8B%E6%96%87%E7%8C%AE-further-reading">さらなる文献 (Further reading)</h2>
+<p>割愛</p>
+
+</body>
+</html>
