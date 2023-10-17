@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>7.5.2-7.5.5_satosho.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<!--ここから追記 1.(数式に対応させる)-->
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      "HTML-CSS": { fonts: ["TeX"] },
+      tex2jax:{inlineMath: [['$', '$']]},
+      messageStyle: "none"
+    });
+</script>
+<!--追記 1.ここまで-->
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+  <!--ここから追記 2.(--- で改ページ)-->
+  <style>  
+    hr {  
+      opacity: 0;  
+      break-after: page;  
+    }  
+  </style>  
+  <!--追記 2.ここまで-->
+<br>
+<br>
+<br>
+<br>
+<br>
+<h3 id="752-%E3%82%B7%E3%83%B3%E3%83%81%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%89%E3%83%AA%E3%83%95%E3%83%88">7.5.2 シンチレーションドリフト</h3>
+<p>シンチレーション (<code>scintillation: またたき、きらめき、閃光</code>) 現象は、上層大気の運動を地上から測定する方法に利用できる可能性がある。その手法とは、電離層から反射された、あるいは電離層を通過して送信された無線信号のフェージング (<code>fading: 衰調(通信の用語)</code>) を、間隔をあけて受信機で観測することである。間隔が信号フェージングの相関距離より小さければ、図7.41 (a)のように、各受信機は同じようなフェージングパターンでありながら小さな時間変位が重なるようなフェージングを記録するが可能性が高い。単純に解釈すると、不規則な領域（すなわち回折スクリーン - 2.6.2節）が観測サイトを横切って丸ごと (<code>bodily</code>) 移動している。受信網の形状を知れば、電離層運動の速度と方向を推測することは難しくない。</p>
+<p>単純な例として、受信局が図7.41(b) のような直角三角形をなす状況を考える。このとき、時間差 $t_1$ と $t/2$ は$x, y$ 方向に次の「見かけの速度」$V'_x$ と $V'_y$ を与える。</p>
+<p>$$<br>
+\begin{aligned}<br>
+&amp; V_x^{\prime}=R_1 R_3 / t_2 \<br>
+&amp; V_y^{\prime}=R_1 R_2 / t_1<br>
+\end{aligned}<br>
+$$</p>
+<p>図7.41を見てわかるように、</p>
+<p>$$<br>
+\frac{1}{\mathrm{~V}^2}=\frac{1}{\left(\mathrm{~V} _{\mathrm{x}}^{\prime}\right)^2}+\frac{1}{\left(\mathrm{~V} _{\mathrm{y}}^{\prime}\right)^2}<br>
+$$</p>
+<p>したがって、</p>
+<p>$$<br>
+\mathrm{V}=\frac{\mathrm{V} _{\mathrm{x}}^{\prime} \mathrm{V} _{\mathrm{y}}^{\prime}}{\left[\left(\mathrm{V} _{\mathrm{x}}^{\prime}\right)^2+\left(\mathrm{V} _{\mathrm{y}}^{\prime}\right)^2\right]^{\frac{1}{2}}}<br>
+$$</p>
+<hr>
+<blockquote>
+<br>
+<p>図7.41</p>
+<p>地面上の不規則なパターンの動きを観測するための間隔受信機法、</p>
+<p>(a) 受信局 $R_1, R_2, R_3$ における典型的なフェージング。</p>
+<p>(b) 真の速度と見かけの速度の関係。<br>
+<br><br>
+<br></p>
+</blockquote>
+<br>
+<br>
+<p>また、</p>
+<p>$$\theta = \tan^{-1} \left\lbrace \frac{V'_x}{V'_y} \right\rbrace$$</p>
+<p>である。$V'_x$ と $V'_y$ は通常の意味での速度成分ではないことに注意する。</p>
+<p>この取り扱い方は、直角三角形以外にグループ化された受信局に対しても容易に一般化できるが、直角三角形の例が実際に起こりうる複雑さのうちで最も小さいものである。受信局同士が十分に離れていて、測定可能な時間差を与えられる場合によく起こることは、信号のフェージングパターンがもはや同一ではなくなるということである。これは、移動に伴ってフェージングパターンが変化していることを意味し、この場合、上記の処理は適切ではない。極端な例を挙げれば、パターンが変化しているが移動していない場合、間隔を置いた受信局同士の間の平均時間差はゼロとなる。しかし、真の速度は無限大ではなく、不確定である。動いているパターンの変化の影響は、測定された時間差を減らし、見かけの速度を増加させる (<code>??</code>)。これは、次の式で定義される概念的な<em>特性速度</em>を導入することによって処理される。</p>
+<p>$$V_e = d_0 / t_0$$</p>
+<p>ここで、$d_0$ は特性距離（すなわち不規則性のサイズ）、$t_0$ は特性フェージング時間であり、どちらもパターンとともに移動する観測者によって測定されるものである。真の速度 $V$ は、この観測者の速度である。静止した観測者がベクトルVの方向の速度を測定するとする。</p>
+<hr>
+<p>原理的には観測者は $d_0$ を正しく決定できるが、フェージング時間（$t'_0$）の測定値は、パターンの移動のため $t_0$ より小さくなる。したがって、別の速度を定義できる。</p>
+<p>$$V'_c = d_0 / t'_0$$</p>
+<p>$V$ と $V_c$ は観測された量 $V'$ と $V'_c$ から次式によって求めることができる。</p>
+<p>$$V_c'^2 = V_c ^2 + V^2 = V'V$$</p>
+<p>4つの受信局で観測を行えば、パターンの異方性 (<code>Anisotropy</code>) にも対応できる。この方法は、単一の不規則性に対して適用され、かつ測定が正確である場合には、文句のつけようがないほど完璧である。現実には、電離層の不規則性は大小さまざまであるのが普通であり、それらがすべて一緒に動いたり、同じ速度で変化したりする保証はない。最良の平均解を得るために、解析は通常、個々の特徴ではなく相関係数（式2.70）に基づいて行われるが、時には正当化できない仮定も残されている。</p>
+<p>間隔を空けて受信機を配置する技術は電離層研究に広く適用されている。これは便利で比較的安価であり、しばしば唯一の方法である！他の手法との直接比較では、一般論として結果が検証されてきた傾向にある。E領域とF領域の動きは、地上から信号を送信し、そのエコーを観測することで調べることができる。F領域の測定は、電波星や衛星ビーコンのシンチレーションを観測することによっても達成できる。この手法は、D領域からの部分反射でも有効である（3.5.5節）。この反射を見るバージョンでは、地上で測定される速度は電離層での速度の2倍になる。</p>
+<p>6.5.3節と6.5.4節を参照すると、原則として、E領域とD領域で推定される運動は中性の空気の運動を示し、F領域の運動は電場の運動を示すことがわかる。</p>
+<h3 id="753-%E4%BD%8E%E7%B7%AF%E5%BA%A6%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E3%82%B9%E3%83%97%E3%83%AC%E3%83%83%E3%83%89f%E3%83%90%E3%83%96%E3%83%ABf%E9%A0%98%E5%9F%9F%E3%81%AE%E4%B8%8D%E8%A6%8F%E5%89%87%E6%80%A7">7.5.3 低緯度におけるスプレッドF、バブル、F領域の不規則性</h3>
+<p>シンチレーションは、UHF帯（300MHz以上）であっても、低磁気緯度で特に強くなることがある。赤道付近のシンチレーションは7GHzの高い周波数で報告されており、4GHzでは9dBのシンチレーションが観測されている。その強度と発生は、日没直後の時間帯で、春分・秋分前後に最大であるが、異なる受信局からの測定値の間には大きなばらつきがあり、これは間違いなく幾何学的な要因と赤道F領域の縦方向のばらつきによるものである。赤道域のシンチレーションは、電子密度の不規則性に起因するSpread-Fのレンジスプレッド型と強い相関がある。このSpread-Fの発生は、春分・秋分付近と冬至に多いが、5月から8月にかけては少ない。日中は現地時間（LT）2100頃にピークを迎える。</p>
+<p>電波伝搬の影響の大きさから、ロケットや衛星、コヒーレント・レーダー、インコヒーレント・レーダー、電離層電波伝搬、光度計などの総合的・包括的なアプローチ (<code>campaign: ある目的に向かって計画的・組織的に行われる行動、遠征</code>) を使って、赤道F領域の不規則性が徹底的に調べられてきた。このアプローチにより、赤道電離層には数百キロメートルから数十センチメートルまで、5〜6桁にも及ぶ広大な大きさの不規則性が存在することが明らかになった。</p>
+<p>ロケットや衛星による<em>その場</em>測定によって、赤道F領域では夜間にプラズマ密度が大きく空洞化することが明らかになった。空洞化した領域は鋭いエッジを持ち、その中でイオンは約100m/sの上昇速度を持ち、また西側には約20m/sの上昇速度を持つ。</p>
+<hr>
+<blockquote>
+<br>
+図7.42 
+<p>(a) 1978年3月12-13日にアセンション島で137MHzで観測された電子量の変動とそれに伴うシンチレーション。</p>
+<p>(b) 衛星AE-Eで観測されたイオン濃度の大きな変動。</p>
+<p>(S. Basu and S. Basu, /. Atmos. Terr. Phys. 43, 473, copyright (1981) Pergamon Press PLC; after J. A. Klobuchar et ai, 1978, with data from J. P . McClure and W. B. Hanson から許可を受けて掲載)<br>
+<br></p>
+</blockquote>
+<br>
+<br>
+<p>このような<em>バブル</em>は、インコヒーレント散乱レーダーのようなリモートセンシング技術でも検出され、電子量データ（図7.42）には、40％もの空洞化が見られる。630nmの大気光強度も同じ領域で空洞化する。また、シンチレーションとの関連も見られ、シンチレーションは明らかにバブルの鋭いエッジで発生する。空洞の典型的な大きさは東西100km、南北1200kmで、地磁気に沿って並んでいる。上昇気泡の原因は、レイリーテイラー不安定性によって説明されている（2.8.3節）。</p>
+<h3 id="754-%E8%B5%A4%E9%81%93%E3%82%A8%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AD%E3%82%B8%E3%82%A7%E3%83%83%E3%83%88%E3%81%AE%E4%B8%8D%E8%A6%8F%E5%89%87%E6%80%A7">7.5.4 赤道エレクトロジェットの不規則性</h3>
+<p>赤道E領域の不規則性は、赤道エレクトロジェットと密接に関連している。このエレクトロジェットは、中立大気の風によって駆動される全球電流系の一部であり、カウリング導電率(6.5.5節)が高いため, 磁気赤道上ではより強くなる。</p>
+<hr>
+<blockquote>
+<br>
+図7.43 
+<p>ペルーのジカマルカで比較的散乱の強かった時期に観測された、赤道域のエレクトロジェットの不規則性によるドップラースペクトル。スペクトルは一定のピーク値で規格化されている。</p>
+<p>(After R. Cohen and K. L. Bowles, /. Geophys. Res. 72, 822, 1967, copyright by the American Geophysical Union)</p>
+<br>
+</blockquote>
+<br>
+<p>赤道上の東西電場は約0.5mV/mであるが、垂直電場（電離層の垂直分極を表す）はもっと大きい。電子の東西ドリフト速度は400-600m/sであり、これはイオン音響速度を超えるため、2ストリーム不安定性（2.8.2節）が発生する可能性があり、電離媒質に不規則性を発生させる。</p>
+<p>赤道域のE領域の不規則性は、イオノグラム上ではスポラディックE層として観測されるが、この場合はウィンドシア（7.1.1 節）が原因ではない。このようなスポラディックE層は、高層からの反射を覆わない。赤道域のスポラディックE層の発生率は、エレクトロジェットの強度と相関がある。しかし、ほとんどの調査は、コヒーレント散乱レーダー（3.6.3節）によるものである。レーダーの電波周波数は重要ではなく、10MHz以下から100MHz以上まで可能で、その波長は観測される不規則性の大きさを選択する。これらの不規則性は昼夜を問わず存在する。これらは磁場に沿って強く整列しており、レーダー信号は地磁気方向に対して直角に散乱領域に合わなければならない。赤道上では、レーダーを磁気東西面のどこに向けてもこの条件を満たすことができる。</p>
+<p>2本のストリームによるメカニズムによって発生する不規則性は、狭いスペクトルを特徴とするエコー（図7.43）を与え、「タイプ1エコー」として知られている。ここでのドップラーシフトは約120Hz（50MHzレーダーの場合）であり、これはイオン音響速度の約360m/sに相当する。</p>
+<hr>
+<p>ドップラーシフトは、レーダーが東を向いているか西を向いているかによって符号が変わり、昼と夜で逆転する。ドップラーシフトが天頂角約45°から70°の間で一定であることは、不思議だが重要な事実である。これは、不規則性の速度がイオン音速程度で「飽和」し、あらゆる方向（地磁気に対して垂直方向）に移動することを示しており、単に電子流に流されるだけではないことを示している。</p>
+<p>「タイプ2エコー」を引き起こす2番目のタイプの不規則性は、勾配ドリフト不安定性（2.8.3節）によって説明される。この不安定性の発達に必要なのは磁場を横切る電子とイオンの相対運動（図2.17）であるが、これは電流によってもたらされる。その結果、電流の方向によって、電子密度勾配の不規則性が強調されたり、安定化されたりする。実際、昼間のエレクトロジェットが東向きから西向きに反転すると、エコーが消失することが観測されている。タイプ2のエコーはタイプ1よりも広いスペクトルを示し、その発生に閾値となる電流はない。</p>
+<h3 id="755-%E9%9B%BB%E9%9B%A2%E5%B1%A4%E6%93%BE%E4%B9%B1%E3%81%AE%E4%BC%9D%E6%92%AD">7.5.5 電離層擾乱の伝播</h3>
+<p>音響重力波は中性の空気の現象であるが（4.3節）、中性の粒子の運動は、衝突によって（すなわち空気抵抗によって）電離成分に伝達される可能性がある。電離層の反応の性質は高度に依存する。より低い高度（衝突周波数がジャイロ周波数より大きい）では、プラズマは中性の空気と一緒に動くが、より高い高度（衝突周波数がジャイロ周波数に対して小さい）では、イオンの運動は地磁気を横切って抑制され、唯一許される応答は地磁気に平行な速度成分に対するものである。したがって、F領域では電離層の応答は偏っており、これらの高度でのイオン運動の観測は決して重力波の観測を表しているわけではない。</p>
+<p>とはいえ、上層大気の重力波に関する最も広範な情報は、電離層の電波観測によるものである。主な方法は以下の通りである：</p>
+<ul>
+<li>(a) イオノゾンデ (3.5.1節) と、それに密接に関連する、一定の周波数での仮想高度の連続サウンディング</li>
+<li>(b) HF (<code>高周波</code>) ドップラー (3.5.1節)；</li>
+<li>(c) 電子量測定（3.5.2節）；</li>
+<li>(d) 非干渉性散乱レーダー（3.6.4-5節）.</li>
+</ul>
+<p>これらの結果の顕著な特徴は、観測された擾乱が観測地点間の時間差を示すことであり、伝播波という明白な解釈を誘う：それゆえ、<em>伝搬性電離層擾乱（TID）</em> と呼ばれる。詳細については、得られる情報は手法によって異なる。水平面内の速度ベクトルを与える、間隔を空けた観測に適したものもある。複数の周波数を使用すれば、より高い周波数はより高いレベルから反射されるので、高周波ドップラーから鉛直方向の速度成分を得ることができる、<br>
+反射高度は、イオノゾンデを使って求めることができる。通常は1地点に限定されるが、 インコヒーレント散乱レーダーは、トップサイドを含む高さの連続関数として観測でき、電子密度だけでなくイオン温度やプラズマ速度も測定できるため、かなりの利点がある。</p>
+<hr>
+<blockquote>
+<br>
+<br>
+<br>
+図7.44 
+<p>(a)と(b)。凡例は見開きページを参照。</p>
+<br>
+<p>(以下、次ページより凡例を抜粋)</p>
+<p>電離層擾乱の伝播による影響。</p>
+<p>(a)1つの地上局で受信した2つの静止衛星ビーコンからの電子量。電離層の交点は350km離れており、観測された波の時間変化は東西方向の速度成分を示している、</p>
+<p>(b)イオノゾンデによる複数の周波数での仮想高度の変化。重力波に特徴的な下向きの動きが見られる、</p>
+<p>((a) と (b) は次から許可を受けて掲載。<br>
+R. D. Hunsucker and J. K. Hargreaves, /. Atmos. Terr. Phys. 50,167, copyright (1988) Pergamon Press PLC; )</p>
+<br>
+<br>
+<br>
+</blockquote>
+<hr>
+<blockquote>
+<br>
+図7.44
+<p>電離層擾乱の伝播による影響。</p>
+<p>(c)108MHzで観測された電波星「はくちょう座A」の見かけの位置に対する、くさび屈折による大きな不規則性の影響、</p>
+<p>((c) from R. S. Lawrence et al, Proc. IEEE SI, 4, 1964, © 1964 IEEE)<br>
+<br></p>
+</blockquote>
+<p>高さの関数として測定する手法から、観測された周期を用いて、垂直波長を求めることが可能である。次に、ブラント周波数と音響カットオフ周波数（$\omega_b$ と $\omega_a$ ）、および関連する高度での音速のモデル値をとれば、式4.36から水平波長と（周期がわかれば）水平速度を推定することができる。このように、1つの手法から多くのことを学ぶことができるが、最も完全な診断のためには、いくつかの手法を併用するのが最善であり、そのような取り組みもいくつか実施されている。</p>
+<p>TIDは決して珍しいものではなく、1961年にC. O.ハインズが重力波として説明する1961年以前から、その発生は何年も前から指摘されていた。図7.44の例では、1つは電子量測定によるもの、1つはイオノゾンデによるもの、 もう1つは電波星の屈折を示しているが、これも間違いなく地球電離層の重力波によるものである。(<em>ウェッジ屈折</em>の議論については 3.5.2 節を参照) 平均的な TID は、電子含有量に約 1 %の変動を生じ、5 %はむしろ大きな波であるが、これらの小さな変化は、それにもかかわらず、容易に検出可能である。個々の例は、周期、方向、速度に関して様々であり、これに基づいて2つの主なカテゴリーが定義されている。</p>
+<p>周期が約30分以上の波は、水平位相速度が400～1000m/s、水平波長が1000kmを超え、<em>大規模波</em>と呼ばれる。大規模波の場合、$\omega \ll \omega_b$ となり（式4.38参照）、波はほぼ垂直に伝播し、粒子の運動はほぼ水平になる。したがって、水平位相速度は伝播方向の速度を上回る。</p>
+<hr>
+<blockquote>
+<br>
+図7.45 
+<p>1985年10月18日に多くの地点で観測されたTIDの発生源域。</p>
+<p>(D. D. Rice et ai, Radio Science 23, 919, 1988, copyright by the American Geophysical Union)<br>
+<br></p>
+</blockquote>
+<p>大規模なTIDは極から赤道へと移動する傾向があり、その発生源は高緯度におけるオーロラ活動や地磁気活動の何らかの側面であると考えられている。この関連性を示す統計的な証拠はあるが、明確な個別 の例はそう簡単には見つからない。図7.45は、多くの地点で観測されたTIDが共通の発生源に遡ることができた一例を示している。地上からの観測（インコヒーレント散乱レーダー、高周波ドップラー、イオノゾンデ）では、発生源は斜線領域内にあり、衛星によるオーロラ放射の観測では、A、B、Cで示された領域でサブストームが発生していた。</p>
+<hr>
+<blockquote>
+<br>
+<p>図7.46</p>
+<p>1967年6月14日、コロラド州ボルダー上空、4MHzにおける高周波ドップラー記録。急激な変動は電離層の音響波によるもの。</p>
+<p>(A.G.JeanとG.M.Lerfaldの私信による。)</p>
+<br>
+</blockquote>
+<p>周期60〜90分の2〜3波のグループが、2〜7時間後に観測地点を横切った。これらの様々な地点で、水平速度は425-720m/s、水平波長は1600-3500km、垂直波長は360-500kmと推定された。入射の方位を示した地点もあった。このケーススタディは、個々にノイズの多い観測を統合し、発生源の性質に関する一つの考えを裏付ける首尾一貫した全体像として興味深い。</p>
+<p>また、高エネルギー粒子降水時の上層大気の加熱とオーロラエレクトロジェット（8.4.2節）、エレクトロジェットとオーロラアークの運動が、それぞれ発生源として働くと主張する理論的根拠もある。エレクトロジェットの方がより好ましい発生源であり、その運動（「ローレンツ寄与」）と加熱効果（「ジュール寄与」）の両方による寄与があるかもしれない。これらの寄与の相対的な大きさ（「ローレンツ／ジュール」）は、発生源領域における導電率と電流の比に依存し、この比の測定は、インコヒーレント散乱レーダー測定（電子密度、したがって導電率を与える）と地上ベースの磁力計データ（電流を与える）を組み合わせることによって試みられてきた。この証拠からすると、「ローレンツ」が優位に立っているように思われる。粒子による加熱とオーロラ構造の移動の相対的な重要性は不確かである。いくつかのケースでは、中緯度のTIDは、リオメーター技術によって検出された急峻なオーロラ降水イベントに関連している（8.3.6節）。上述した事例はこれと一致しているように思われる。</p>
+<p><em>中規模波</em>の周期は約15分～1時間、水平速度は100～250m/s、波長は数百kmである。波面は通常、垂直から約45度で、コヒーレンスの規模は数百キロメートルと、大規模波よりも小さい。中規模波の発生源は、大規模波ほど確実ではない。雷雨やジェット気流などの気象学的原因が有力な説明である。</p>
+<p>電離層の高周波ドップラー観測の中には、数分の周期性を示すものがあり、これらは音響波によるものと考えられている。これらの波は500～600m/sで上方に伝播し、対流圏の厳しい天候の近傍の限られた領域で発生する。その例を図7.46に示す。この場合、変動周期は世界時（UT）0500～0700 の間の3～5分で、これは典型的な変動である。このような音響波は、音響共振（図4.24）によって定まる周期が最長で、発生する周期が短いものは大気中で吸収される傾向があるため、大気中でフィルタリングされる。</p>
+<hr>
+<p>様々な無線システム、特に方向測定が関係するシステムの性能に影響を与えるよく知られた擾乱として、TIDはより多くのことを知る必要がある問題を提示している。</p>
+<h3 id="further-reading">Further Reading</h3>
+<p>割愛</p>
+
+</body>
+</html>
